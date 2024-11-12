@@ -41,7 +41,10 @@ const Body = () => {
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-6">
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-7xl drop-shadow-md mb-4">
-            Fund <span className="text-green-500">Help Others</span>
+            Fund <span className="bg-gradient-to-r from-green-400 via-teal-500 to-yellow-400 text-transparent bg-clip-text">
+  Help Others
+</span>
+
           </h1>
           <p className="text-lg sm:text-xl font-medium text-gray-100 leading-relaxed mb-8 max-w-2xl drop-shadow-sm">
             Join us in making a difference. Start funding today to support those in need and create a brighter tomorrow.
