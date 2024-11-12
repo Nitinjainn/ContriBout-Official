@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { auth, db } from '../firebaseConfig';
+import { getDoc, doc, updateDoc } from 'firebase/firestore';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -8,50 +12,104 @@ const Profile = () => {
     address: '123 Main Street, Cityville',
     email: 'john.doe@example.com',
     accountNo: '123456789012',
-    previousLoans: [], // No loans by default
+    previousLoans: [],
     currentLoan: null,
-    image: null // Default icon shown when no image is present
+    image: null,
   });
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setIsLoggedIn(true);
+        const profileDoc = doc(db, 'users', user.uid);
+        const profileData = await getDoc(profileDoc);
+        if (profileData.exists()) {
+          setProfile(profileData.data());
+        }
+      } else {
+        setIsLoggedIn(false);
+        navigate('/login');
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProfile({ ...profile, [name]: value });
   };
 
-  const toggleEdit = () => {
+  const toggleEdit = async () => {
+    if (isEditing) {
+      const user = auth.currentUser;
+      if (user) {
+        const profileDoc = doc(db, 'users', user.uid);
+        await updateDoc(profileDoc, profile);
+      }
+    }
     setIsEditing(!isEditing);
   };
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      setIsLoggedIn(false);
+      navigate('/login');
+    } catch (error) {
+      console.error("Error logging out:", error.message);
+    }
+  };
+
+  const handleHomeRedirect = () => {
+    navigate('/'); // Navigates to the home page when the icon is clicked
+  };
+
   return (
-    <div className="bg-gradient-to-r from-green-50 to-white p-5 md:p-8 max-w-4xl mx-auto my-10 shadow-lg rounded-xl border border-green-300">
-      {/* Profile Picture and Name Section */}
-      <div className="flex flex-col md:flex-row items-center mb-6 md:mb-8">
-        <div className="relative mb-4 md:mb-0">
-          {profile.image ? (
-            <img
-              src={profile.image}
-              alt="Profile"
-              className="w-28 h-28 rounded-full border-4 border-green-400 shadow-lg object-cover"
-            />
-          ) : (
-            <div className="w-28 h-28 rounded-full border-4 border-green-400 shadow-lg bg-green-100 flex items-center justify-center">
-              <i className="fas fa-user text-5xl text-green-500"></i>
+    <div className="bg-gradient-to-r from-green-50 to-white p-5 md:p-8 max-w-4xl mx-auto my-10 shadow-lg rounded-xl border border-green-300 relative">
+      {/* Profile Content */}
+      <div className="flex flex-col items-start mb-6 md:mb-8">
+        <div className="relative w-full">
+          {/* Profile Icon Positioned at Top-Left */}
+          <div className="flex justify-between items-center w-full mb-4">
+            <div className="flex flex-col items-start">
+              {/* Profile Image */}
+              {profile.image ? (
+                <img
+                  src={profile.image}
+                  alt="Profile"
+                  className="w-28 h-28 rounded-full border-4 border-green-400 shadow-lg object-cover"
+                />
+              ) : (
+                <div className="w-28 h-28 rounded-full border-4 border-green-400 shadow-lg bg-green-100 flex items-center justify-center">
+                  <i className="fas fa-user text-5xl text-green-500"></i>
+                </div>
+              )}
             </div>
-          )}
-        </div>
-        <div className="text-center md:text-left md:ml-6">
-          {isEditing ? (
-            <input
-              type="text"
-              name="name"
-              value={profile.name}
-              onChange={handleInputChange}
-              className="text-3xl font-extrabold text-green-700 border-b-2 border-green-300 focus:outline-none focus:border-green-500 transition duration-200"
-            />
-          ) : (
-            <h2 className="text-3xl font-extrabold text-green-700">{profile.name}</h2>
-          )}
-          <p className="text-md text-green-600 font-light italic mt-1">Customer Profile</p>
+
+            {/* Home Icon Positioned at the Top-Right */}
+            <div className="cursor-pointer" onClick={handleHomeRedirect}>
+              <i className="fas fa-home text-3xl text-green-700 hover:text-green-500 transition duration-200"></i>
+            </div>
+          </div>
+
+          {/* User Name Below Profile Icon */}
+          <div className="flex flex-col items-start">
+            {isEditing ? (
+              <input
+                type="text"
+                name="name"
+                value={profile.name}
+                onChange={handleInputChange}
+                className="text-3xl font-extrabold text-green-700 border-b-2 border-green-300 focus:outline-none focus:border-green-500 transition duration-200"
+              />
+            ) : (
+              <h2 className="text-3xl font-extrabold text-green-700">{profile.name}</h2>
+            )}
+          </div>
         </div>
       </div>
 
@@ -103,13 +161,27 @@ const Profile = () => {
         </div>
 
         {/* Edit Button */}
-        <button
-          onClick={toggleEdit}
-          className="mt-6 bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-2 rounded-full shadow-lg transition duration-300"
-        >
-          {isEditing ? 'Save' : 'Edit'}
-        </button>
+        {isLoggedIn && (
+          <button
+            onClick={toggleEdit}
+            className="mt-6 bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-2 rounded-full shadow-lg transition duration-300"
+          >
+            {isEditing ? 'Save' : 'Edit'}
+          </button>
+        )}
       </div>
+
+      {/* Logout Button (Aligned to the right) */}
+      {isLoggedIn && (
+        <div className="flex justify-end mt-6">
+          <button
+            onClick={handleLogout}
+            className="bg-red-500 hover:bg-red-600 text-white font-semibold px-8 py-2 rounded-full shadow-lg transition duration-300"
+          >
+            Logout
+          </button>
+        </div>
+      )}
     </div>
   );
 };

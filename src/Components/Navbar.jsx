@@ -15,6 +15,16 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+const handleLogout = async () => {
+  try {
+    await signOut(auth);
+    setIsLoggedIn(false);
+    navigate('/');
+  } catch (error) {
+    console.error("Error logging out:", error.message);
+  }
+};
+
 export default function Example() {
   return (
     <Disclosure as="nav" className="bg-gray-900">
@@ -91,7 +101,7 @@ export default function Example() {
                 </MenuItem>
                 <MenuItem>
                   <a
-                    href="#"
+                    href="#" onClick={handleLogout}
                     className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                   >
                     Sign out
