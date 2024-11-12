@@ -5,8 +5,8 @@ import { Link } from "react-router-dom"; // Import Link
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
-  { name: 'Donation', href: '/', current: false },
-  { name: 'How It Works', href: '/', current: false },
+  { name: 'Donation', href: '/DonationPage', current: false },
+  { name: 'How It Works', href: '/HowItWorks', current: false },
   { name: 'About us', href: '/', current: false },
   { name: 'Sign-In', href: '/signup', current: false },
 ]
@@ -62,14 +62,13 @@ export default function Example() {
             </button>
 
             {/* Profile dropdown */}
-            <Menu as="div" className="relative ml-3">
-              <div>
-                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                <span className="sr-only">Open user menu</span>
-                  <UserIcon className="h-8 w-8 text-gray-400" aria-hidden="true" />
-
-                </MenuButton>
-              </div>
+            <Menu as="div" className="relative ml-3 z-40"> {/* z-40 ensures this stays above the modal */}
+            <div>
+            <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+            <span className="sr-only">Open user menu</span>
+            <UserIcon className="h-8 w-8 text-gray-400" aria-hidden="true" />
+            </MenuButton>
+            </div>
               <MenuItems
                 transition
                 className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"

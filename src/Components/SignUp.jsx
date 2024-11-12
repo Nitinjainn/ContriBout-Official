@@ -7,7 +7,7 @@ const Signup = () => {
     <div className="flex justify-center items-center min-h-screen bg-[#f0f4fc]">
       <div className="flex w-4/5 max-w-3xl bg-white rounded-lg overflow-hidden shadow-lg">
         {/* Left Section */}
-        <div className="w-1/2 bg-[#1e3a8a] text-white p-8 flex flex-col justify-center items-center">
+        <div className="w-1/2 bg-[#2b7914] text-white p-8 flex flex-col justify-center items-center">
           <h1 className="text-xl text-center font-bold mb-4">Bringing communities together</h1>          <p className="text-m text-center mb-4">Unlock community-driven lending with trust and ease</p>
           <div className="mt-4 h-[300px] w-[300px] flex gap-5">
             <img src= {img} alt="Community" className="object-cover" />
@@ -56,7 +56,7 @@ const Signup = () => {
             </div>
 
             {/* Submit Button */}
-            <button className="w-full p-3 bg-[#1e3a8a] text-white rounded-lg text-lg hover:bg-[#2c5282] transition-all duration-300">Sign up</button>
+            <button className="w-full p-3 bg-[#46a720] text-black rounded-lg text-lg hover:bg-[#184d14] transition-all duration-300 hover:text-gray-100"> Sign up</button>
             <p className="text-sm text-center text-gray-600 mt-6">
               Already have an account? 
               <a href='/Login' className="text-[#1e3a8a] "> Login </a>

@@ -5,6 +5,8 @@ import Home from './Pages/Home';
 import Login from './Components/Login';
 import Signup from "./Components/SignUp";
 import Profile from "./Components/Profile";
+import DonationPage from "./Components/DonationPage";
+import HowItWorks from "./Components/HowItWorks";
 
 
 const App = () => {
@@ -16,19 +18,11 @@ const App = () => {
           <Route path='/signup' element = { <Signup/>}/>
           <Route path='/Login' element = {<Login/>}/>
           <Route path='/Profile' element = {<Profile/>}/>
+          <Route path='/DonationPage' element = {<DonationPage/>}/>
+          <Route path='/HowItWorks' element = {<HowItWorks/>}/>
         </Routes>
       </div>
     </Router>
-    // <>
-    //   <Navbar/>    
-    //   <Body/>
-    //   <Badges/>
-    //   <Feature/>
-    //   <Next/>
-    //   <FAQSection/>
-    //   <Trusted/>
-    //   <Footer/>
-    // </>
   )
 
 }

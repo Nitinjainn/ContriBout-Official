@@ -6,6 +6,7 @@ import Next from '../Components/Next';
 import Trusted from '../Components/Trusted';
 import FAQSection from '../Components/FaqSection';
 import Footer from '../Components/Footer';
+import ScrollToTop from '../Components/ScrollToTop';
 
 
 function Home() {
@@ -19,6 +20,7 @@ function Home() {
         <FAQSection/>
         <Trusted/>
         <Footer/>
+        <ScrollToTop/>
       </>
     );
   }
