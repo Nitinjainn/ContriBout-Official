@@ -7,6 +7,7 @@ import Signup from "./Components/SignUp";
 import Profile from "./Components/Profile";
 import DonationPage from "./Components/DonationPage";
 import HowItWorks from "./Components/HowItWorks";
+import StartFundraising from "./Components/StartFundraising";
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
           <Route path='/Profile' element = {<Profile/>}/>
           <Route path='/DonationPage' element = {<DonationPage/>}/>
           <Route path='/HowItWorks' element = {<HowItWorks/>}/>
+          <Route path='/StartFundraising' element = {<StartFundraising/>}/>
         </Routes>
       </div>
     </Router>

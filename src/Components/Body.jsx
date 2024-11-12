@@ -51,7 +51,7 @@ const Body = () => {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <a
-              href="#"
+              href="/StartFundraising"
               className="rounded-full bg-green-500 px-8 py-4 text-lg font-semibold text-black shadow-lg hover:bg-green-700 hover:shadow-xl transition-all cursor-pointer hover:text-slate-100"
             >
               Start Fundraising
@@ -60,7 +60,7 @@ const Body = () => {
               href="#"
               className="rounded-full border border-gray-100 px-8 py-4 text-lg font-semibold text-gray-100 hover:bg-gray-100 hover:text-black transition-all cursor-pointer"
             >
-              Learn More
+              Create Community
             </a>
           </div>
         </div>
