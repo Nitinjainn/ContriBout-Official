@@ -39,7 +39,7 @@ export default function FundraiserStats() {
             People From Around The World Joined
           </p>
           <button className="mt-8 px-8 py-3 sm:px-10 sm:py-5 bg-green-500 text-white text-lg sm:text-2xl font-semibold rounded-md hover:bg-green-600 transition-all">
-           Join Community!!
+           <a href="/CommunityCards">Join Community!!</a>
           </button>
         </div>
 

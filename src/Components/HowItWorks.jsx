@@ -10,11 +10,11 @@ const HowItWorks = () => {
     <div className="relative w-full min-h-screen flex justify-center items-center p-4 sm:p-6 lg:p-8">
       <div className="text-center max-w-3xl px-4">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-800 mb-4">
-          How ContriBout Works
+          How VibeTribe Works
         </h1>
         <p className="text-base sm:text-lg lg:text-xl text-gray-700 mb-8">
-          Inspired by village committees, ContriBout brings this community-driven funding concept online. Our goal is to
-          support financial growth while offering opportunities to lend and invest.
+          Inspired by community-driven travel experiences, VibeTribe brings the concept of shared travel goals and
+          support to life. Our aim is to make travel accessible, enjoyable, and impactful for everyone.
         </p>
         <button
           onClick={openModal}
@@ -28,28 +28,30 @@ const HowItWorks = () => {
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-30 bg-black/60 backdrop-blur-md">
           <div className="bg-white max-w-lg w-full mx-4 sm:mx-8 lg:mx-12 p-6 sm:p-8 rounded-lg shadow-lg text-center space-y-4">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">How ContriBout Empowers Communities</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">How VibeTribe Empowers Travelers</h2>
             <p className="text-sm sm:text-base text-gray-700">
-              ContriBout uses an online version of village funding circles to help members grow financially. Here’s how:
+              VibeTribe uses a shared travel fund model to help members achieve their travel goals. Here’s how:
             </p>
             <ul className="text-left list-disc list-inside space-y-2 text-gray-600 mt-4 text-sm sm:text-base">
               <li>
-                <strong>Monthly Committees:</strong> Members contribute small monthly amounts, with funds distributed to a rotating member
-                each cycle, earning them interest.
+                <strong>Shared Travel Fund:</strong> Members contribute monthly, with funds being used to support a rotating
+                member’s travel needs, earning interest along the way.
               </li>
               <li>
-                <strong>Investing for Growth:</strong> We accept investor funds at competitive market rates, which we then lend to those in
-                need at a lower rate, creating a positive impact.
+                <strong>Travel Loans:</strong> We offer loans to members who need assistance, making travel more affordable
+                for everyone.
               </li>
               <li>
-                <strong>Low-Cost Loans:</strong> ContriBout provides loans to those in need, supported by donations and interest earned, ensuring
-                accessible funding for everyone.
+                <strong>Collaborative Travel:</strong> VibeTribe connects like-minded travelers, creating a platform for
+                shared experiences and goals.
               </li>
               <li>
-                <strong>Donation Fund:</strong> Contributions help extend low-interest loans and direct support to underserved communities.
+                <strong>Low-Cost Funding:</strong> We provide loans and support to underserved communities, making travel
+                more accessible to everyone.
               </li>
               <li>
-                <strong>Transparency and Growth:</strong> All transactions are visible to members, creating a reliable platform for community support.
+                <strong>Transparency and Growth:</strong> All transactions are visible, ensuring trust and fostering a
+                community of support.
               </li>
             </ul>
             <button

@@ -60,9 +60,6 @@ const Login = () => {
         {/* Left Section */}
         <div className="w-full md:w-1/2 bg-[#136613] text-white p-8 flex flex-col justify-center items-center">
           <h1 className="text-3xl text-center font-bold mb-4">Welcome Back!</h1>
-          <div className="mt-4 h-[70px] w-[250px] md:w-[400px] flex justify-center items-center">
-            <img src={img} alt="Login illustration" />
-          </div>
         </div>
 
         {/* Right Section */}
