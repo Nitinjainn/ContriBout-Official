@@ -30,14 +30,14 @@ const Body = () => {
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm rounded-2xl"></div>
 
         {/* "Need Money Urgently" Button at the top right */}
-        <div className="absolute top-4 right-4 z-20">
+        {/* <div className="absolute top-4 right-4 z-20">
           <a
             onClick={openModal}
             className="flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 via-red-600 to-red-700 px-6 py-3 text-sm font-bold text-white shadow-md transition-transform duration-200 transform hover:scale-105 hover:from-red-600 hover:via-red-700 hover:to-red-800 cursor-pointer"
           >
             <i className="fas fa-exclamation-circle text-white"></i> Need Money Urgently?
           </a>
-        </div>
+        </div> */}
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-6">
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-5xl drop-shadow-md mb-4">
@@ -48,13 +48,13 @@ const Body = () => {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <a
-              href="/StartFundraising"
+              href="/CommunityCards"
               className="rounded-full bg-green-500 px-8 py-4 text-lg font-semibold text-black shadow-lg hover:bg-green-700 hover:shadow-xl transition-all cursor-pointer hover:text-slate-100"
             >
               Search Community
             </a>
             <a
-              href="#"
+              href="/CreateCommunity"
               className="rounded-full border border-gray-100 px-8 py-4 text-lg font-semibold text-gray-100 hover:bg-gray-100 hover:text-black transition-all cursor-pointer"
             >
               Create Community

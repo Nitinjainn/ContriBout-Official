@@ -7,7 +7,7 @@ const Footer = () => {
 
         {/* Logo and Description Section */}
         <div className="w-full md:w-1/3 mb-8 md:mb-0">
-          <h3 className="text-2xl font-bold mb-2">ContriBout</h3>
+          <h3 className="text-2xl font-bold mb-2">VibeTribe</h3>
           <p className="text-sm mb-4 text-gray-300">
             Elevating Experience & Sales Control of Your Smart Home.
           </p>

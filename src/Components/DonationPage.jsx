@@ -1,134 +1,101 @@
 import React, { useState } from 'react';
 
 const DonationPage = () => {
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [showWhyDonateModal, setShowWhyDonateModal] = useState(false);
+  const [confirmationMessage, setConfirmationMessage] = useState('');
   const [donationAmount, setDonationAmount] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isWhyDonateOpen, setIsWhyDonateOpen] = useState(false);
-  const [message, setMessage] = useState('');
+  const [donorName, setDonorName] = useState('');
+  const [donorEmail, setDonorEmail] = useState('');
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-  const toggleWhyDonate = () => setIsWhyDonateOpen(!isWhyDonateOpen);
-
-  const handleDonationSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setMessage(`Thank you for your donation of ₹${donationAmount}!`);
-    setIsModalOpen(true); // Show confirmation modal
+    setConfirmationMessage(`Thank you, ${donorName}, for your contribution of $${donationAmount}!`);
+    setShowConfirmationModal(true);
   };
 
+  const closeModal = () => setShowConfirmationModal(false);
+  const toggleWhyDonateModal = () => setShowWhyDonateModal(!showWhyDonateModal);
+
   return (
-    <div className="w-full min-h-screen bg-gradient-to-b from-green-100 via-green-50 to-white py-10 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-screen-lg mx-auto text-center">
-        <h1 className="text-4xl font-extrabold text-gray-800 mb-6">
-          Donate to Support a Cause
-        </h1>
-        <p className="text-lg text-gray-700 mb-8">
-          Every contribution helps us reach more people in need. Join us in creating a positive impact today.
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-green-100 to-white text-gray-800 p-10">
+      <div className="max-w-md text-center">
+        <h1 className="text-4xl font-bold text-gray-800">InvestCycle</h1>
+        <p className="text-gray-600 mb-5">
+          It is a platform where travelers can pool resources monthly, helping each other achieve travel goals through shared contributions and support.
         </p>
-
-        {/* Donation Amount Selection */}
-        <div className="flex flex-wrap justify-center gap-6 mb-8">
-          {[500, 1000, 2500, 5000].map((amount) => (
-            <button
-              key={amount}
-              onClick={() => setDonationAmount(amount)}
-              className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-green-700 transition-transform transform hover:scale-105"
-            >
-              ₹{amount}
-            </button>
-          ))}
-        </div>
-
+        
         {/* Custom Donation Form */}
-        <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Custom Donation</h2>
-          <form onSubmit={handleDonationSubmit}>
-            <label className="block text-gray-700 font-semibold mb-2">Donation Amount (₹)</label>
+        <div className="bg-white p-8 rounded-lg shadow-lg">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Custom Contribution</h2>
+          <form id="donation-form" onSubmit={handleSubmit}>
+            <label htmlFor="amount" className="font-bold text-gray-600 block mb-2">Contribution Amount ($)</label>
             <input
               type="number"
+              id="donation-amount"
+              placeholder="Enter amount (in USD)"
               value={donationAmount}
               onChange={(e) => setDonationAmount(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-green-500"
-              placeholder="Enter amount"
               required
+              className="w-full p-2 border border-gray-300 rounded mb-4"
             />
-
-            <label className="block text-gray-700 font-semibold mb-2">Full Name</label>
+            
+            <label htmlFor="name" className="font-bold text-gray-600 block mb-2">Full Name</label>
             <input
               type="text"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-green-500"
+              id="donor-name"
               placeholder="Your full name"
+              value={donorName}
+              onChange={(e) => setDonorName(e.target.value)}
               required
+              className="w-full p-2 border border-gray-300 rounded mb-4"
             />
-
-            <label className="block text-gray-700 font-semibold mb-2">Email</label>
+            
+            <label htmlFor="email" className="font-bold text-gray-600 block mb-2">Email</label>
             <input
               type="email"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-green-500"
+              id="donor-email"
               placeholder="Your email address"
+              value={donorEmail}
+              onChange={(e) => setDonorEmail(e.target.value)}
               required
+              className="w-full p-2 border border-gray-300 rounded mb-4"
             />
-
+            
             <button
               type="submit"
-              className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-transform transform hover:scale-105"
+              className="w-full p-2 bg-green-600 text-white rounded font-semibold hover:bg-green-700 transition-colors"
             >
-              Donate Now
+              Contribute Now!
             </button>
           </form>
-
-          {/* "Why Donate?" Link */}
-          <button onClick={toggleWhyDonate} className="mt-6 block mx-auto text-gray-600 hover:text-blue-500 transition-all">
-            Why Donate?
-          </button>
+          <a href="#" onClick={toggleWhyDonateModal} className="text-green-700 font-bold mt-4 inline-block">Why Contri?</a>
         </div>
         
-        {/* Impact of Donation */}
-        <div className="mt-12 text-gray-700 text-left max-w-screen-md mx-auto">
-          <h3 className="text-2xl font-semibold mb-4">How Your Donation Helps</h3>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>₹500 provides meals for a family for a day.</li>
-            <li>₹1000 covers medical assistance for an individual in need.</li>
-            <li>₹2500 helps fund educational resources for children.</li>
-            <li>₹5000 sponsors housing support for a homeless family.</li>
-          </ul>
-        </div>
+        {/* Confirmation Modal */}
+        {showConfirmationModal && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50 p-5">
+            <div className="bg-white p-6 rounded-lg text-center max-w-sm w-full">
+              <h2 className="text-2xl font-semibold text-gray-800">Thank You!</h2>
+              <p className="text-green-600 my-4">{confirmationMessage}</p>
+              <button onClick={closeModal} className="bg-green-700 text-white py-2 px-6 rounded mt-4">Close</button>
+            </div>
+          </div>
+        )}
+
+        {/* Why Donate Modal */}
+        {showWhyDonateModal && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50 p-5">
+            <div className="bg-white p-6 rounded-lg text-center max-w-sm w-full">
+              <h2 className="text-2xl font-semibold text-gray-800">Your Contri matters alot...</h2>
+              <p className="text-gray-600 mt-4 mb-6">
+              Contributing helps create a community where travelers can experience the world together. By joining, you support a platform that offers seamless payments, unforgettable experiences, and instant connections, making travel safer, more enjoyable, easy on pockets and accessible for everyone. Your involvement ensures that like-minded adventurers can explore, share, and build memories without barriers—anywhere in the world!
+              </p>
+              <button onClick={toggleWhyDonateModal} className="bg-green-700 text-white py-2 px-6 rounded">Close</button>
+            </div>
+          </div>
+        )}
       </div>
-
-      {/* Confirmation Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
-          <div className="bg-white rounded-lg p-8 shadow-lg max-w-md w-full mx-4">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Thank You!</h2>
-            <p className="text-lg text-green-600 mb-6">{message}</p>
-            <button
-              onClick={closeModal}
-              className="w-full bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700 transition-transform transform hover:scale-105"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Why Donate Modal */}
-      {isWhyDonateOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/60 backdrop-blur-md">
-          <div className="bg-white rounded-xl shadow-lg max-w-lg p-6 text-center space-y-4">
-            <h2 className="text-2xl font-bold">Why Your Donation Matters</h2>
-            <p>
-              Donations support vital causes that provide healthcare, education, and emergency relief to those in need.
-              Your contribution helps make the world a better place, one step at a time.
-            </p>
-            <button
-              onClick={toggleWhyDonate}
-              className="mt-4 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-semibold"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

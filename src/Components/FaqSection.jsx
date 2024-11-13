@@ -37,29 +37,24 @@ const FAQ = ({ question, answer }) => {
 const FAQSection = () => {
   const faqs = [
     {
-      question: 'How Can I Make a Donation?',
-      answer:
-        'You can make a donation through our website by clicking on the Donate button.',
+      question: 'How can I join a travel community?',
+      answer: 'You can join a travel community by visiting the "Community" section of our platform and searching for one that matches your travel interests and destinations.',
     },
     {
-      question: 'Is My Donation Tax-Deductible?',
-      answer:
-        'Yes, all donations are tax-deductible to the full extent of the law.',
+      question: 'Can I create my own travel community?',
+      answer: 'Yes, you can create a new travel community by clicking the "Create Community" button. You can specify the location, travel dates, and the maximum number of members.',
     },
     {
-      question: 'Can I Donate in Honor or Memory of Someone?',
-      answer:
-        'Absolutely. You can specify the honoree’s details during the donation process.',
+      question: 'What are the benefits of joining a community?',
+      answer: 'By joining a community, you can connect with like-minded travelers, share travel tips, plan group trips, and even find travel companions.',
     },
     {
-      question: 'How Will My Donation Be Used?',
-      answer:
-        'Your donation goes directly to supporting our mission and helping those in need.',
+      question: 'Are there any fees to join a community?',
+      answer: 'Joining a community is free! However, some communities may organize paid group events or excursions which would have separate charges.',
     },
     {
-      question: 'Can I Set Up a Recurring Donation?',
-      answer:
-        'Yes, we offer options for monthly, quarterly, and annual recurring donations.',
+      question: 'Can I leave a community if my plans change?',
+      answer: 'Yes, you can leave a community at any time if your travel plans change or if you find a different community that better suits your needs.',
     },
   ];
 
