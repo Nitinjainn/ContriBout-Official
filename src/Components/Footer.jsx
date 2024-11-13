@@ -14,16 +14,6 @@ const Footer = () => {
           <p className="text-xs text-gray-500">© FundInc. 2023 All Rights Reserved.</p>
         </div>
 
-        {/* Links Sections */}
-        <div className="w-full md:w-1/5 mb-8 md:mb-0">
-          <h4 className="text-lg font-semibold mb-3">Donate</h4>
-          <ul className="space-y-2 text-gray-400">
-            <li><a href="#" className="hover:text-yellow-400">Education</a></li>
-            <li><a href="#" className="hover:text-yellow-400">Social</a></li>
-            <li><a href="#" className="hover:text-yellow-400">Medicine</a></li>
-            <li><a href="#" className="hover:text-yellow-400">Disaster</a></li>
-          </ul>
-        </div>
 
         <div className="w-full md:w-1/5 mb-8 md:mb-0">
           <h4 className="text-lg font-semibold mb-3">Help</h4>

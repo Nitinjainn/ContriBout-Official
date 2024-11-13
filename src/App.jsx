@@ -9,6 +9,7 @@ import DonationPage from "./Components/DonationPage";
 import HowItWorks from "./Components/HowItWorks";
 import CreateCommunity from "./Components/CreateCommunity";
 import CommunityCards from "./Components/CommunityCards";
+import InerCard from "./Components/InerCard";
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path='/HowItWorks' element = {<HowItWorks/>}/>
           <Route path='/CommunityCards' element = {<CommunityCards/>}/>
           <Route path='/CreateCommunity' element = {<CreateCommunity/>}/>
+          <Route path='/InerCard' element = {<InerCard/>}/>
         </Routes>
       </div>
     </Router>

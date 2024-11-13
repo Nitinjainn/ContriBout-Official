@@ -12,7 +12,7 @@ const CommunityCard = ({ title, description, peopleJoined, imageSrc }) => {
       <div className="flex justify-between items-center mt-6">
         <span className="text-gray-600 text-sm">{peopleJoined} people joined</span>
         <button className="bg-teal-700 text-white py-2 px-5 rounded-md hover:bg-teal-800 transition-all">
-          Join Community
+          <a href="/InerCard">Join Community</a>
         </button>
       </div>
     </div>
